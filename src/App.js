@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import MyPage from "./components/MyPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+      <h1>React {<i>Context</i>}</h1>
+      <hr />
+      <h3>Teoría</h3>
+      <h4>
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="https://es.reactjs.org/docs/context.html"
+          target="_bank"
+          rel="noreferrer"
         >
-          Learn React
+          doc of context
         </a>
-      </header>
+      </h4>
+      <hr />
+      <MyPage />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }
