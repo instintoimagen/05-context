@@ -1,23 +1,27 @@
-const Main = ({ theme }) => {
+const Main = ({ theme, texts, auth }) => {
   return (
     <main className={theme}>
-      <p>Bienvenido/a invitado/a</p>
-      <p>Hola usuario/a</p>
+      {auth ? <p>{texts.mainHello}</p> : <p>{texts.mainWelcome}</p>}
       <div className="descripcion">
-        <img src="https://placeimg.com/300/300/tech" alt="tech" />
+        {auth ? (
+          <img
+            src="./assets/user-icon.png"
+            alt="user"
+            style={{
+              maxWidth: "100%",
+            }}
+          />
+        ) : (
+          <img src="https://placeimg.com/300/300/tech" alt="tech" />
+        )}
+
         <br />
         <div
           style={{
             textAlign: "left",
           }}
         >
-          <span>
-            Mi contenido principal. Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit. Distinctio recusandae facilis ducimus perspiciatis
-            minus neque consectetur itaque, laudantium nobis officiis numquam
-            modi provident excepturi est eligendi! Explicabo similique corporis
-            beatae.
-          </span>
+          <span>{texts.mainContent}</span>
         </div>
       </div>
     </main>

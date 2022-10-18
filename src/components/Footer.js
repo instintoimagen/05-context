@@ -1,17 +1,14 @@
-const Footer = ({ theme }) => {
+const Footer = ({ theme, texts }) => {
   return (
     <footer className={theme}>
-      <h4>El Footer</h4>
-      <span>
-        © Copyright 2022 - Desarrollado por{" "}
-        <a href="https://sergioortega.com.ar">Sergio Ortega</a>
-      </span>
+      <h4>{texts.footerTitle}</h4>
+      <span>{texts.footerCenter}</span>
       <div>
-        <span>Contacto:</span>
+        <span>{texts.footerContact}</span>
         <ul>
-          <li>Github</li>
-          <li>Linked-in</li>
-          <li>Instagram</li>
+          <li>{texts.footerSocial[0]}</li>
+          <li>{texts.footerSocial[1]}</li>
+          <li>{texts.footerSocial[2]}</li>
         </ul>
       </div>
     </footer>
