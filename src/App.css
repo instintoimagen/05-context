@@ -72,8 +72,9 @@ footer {
   background-color: var(--main-color);
 }
 
-/* Dark theme */
+/* - - - Dark theme - - - 
+Como esta web inicialmente es oscura, el invert se lo pongo al light. Sino aquí estrían definidos los estilos oscuros (.dark) cuando la web predeterminadamente inicia en apariencia "light"  */
 
-.dark {
+.light {
   filter: invert(1);
 }

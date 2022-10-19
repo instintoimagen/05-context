@@ -1,4 +1,5 @@
 import "./App.css";
+import MyPageContext from "./components/MyPageContext";
 import MyPage from "./components/MyPage";
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
           doc of context
         </a>
       </h4>
+      <hr />
+      <MyPageContext />
       <hr />
       <MyPage />
       <br />

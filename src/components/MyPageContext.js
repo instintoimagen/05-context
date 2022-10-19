@@ -1,15 +1,15 @@
 import { useState } from "react";
-import Footer from "./Footer";
-import Header from "./Header";
-import Main from "./Main";
+import { ThemeProvider } from "../context/ThemeContext";
+import FooterContext from "./FooterContext";
+import HeaderContext from "./HeaderContext";
+import MainContext from "./MainContext";
 
-let initialTheme = "dark";
 let initialLanguage = "es";
 let initialAuth = null;
 
 const translations = {
   es: {
-    headerTitle: "Mi aplicación SIN Context API",
+    headerTitle: "Mi aplicación CON Context API",
     headerSubtitle: "Encabezado",
     headerLight: "Claro",
     headerDark: "Oscuro",
@@ -20,7 +20,8 @@ const translations = {
     mainContent:
       "Mi contenido principal. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio recusandae facilis ducimus perspiciatis  minus neque consectetur itaque, laudantium nobis officiis numquam  modi provident excepturi est eligendi! Explicabo similique corporis beatae.",
     footerTitle: "El Footer",
-    footerCenter: [
+    footerCenter: "© Copyright 2022 - Desarrollado por Sergio Ortega",
+    footerCenterDev: [
       <>
         <span>© Copyright 2022 - Desarrollado por: </span>
         <a href="https://sergioortega.com.ar" target="_bank" rel="noreferrer">
@@ -54,7 +55,7 @@ const translations = {
     ],
   },
   en: {
-    headerTitle: "My application WITHOUT Context API",
+    headerTitle: "My application WITH Context API",
     headerSubtitle: "HEADER",
     headerLight: "Light",
     headerDark: "Dark",
@@ -65,7 +66,8 @@ const translations = {
     mainContent:
       "My main content in english. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio recusandae facilis ducimus perspiciatis  minus neque consectetur itaque, laudantium nobis officiis numquam  modi provident excepturi est eligendi! Explicabo similique corporis beatae.",
     footerTitle: "My footer",
-    footerCenter: [
+    footerCenter: "© Copyright 2022 - Developer by Sergio Ortega",
+    footerCenterDev: [
       <>
         <span>© Copyright 2022 - Developer by: </span>
         <a href="https://sergioortega.com.ar" target="_bank" rel="noreferrer">
@@ -100,22 +102,11 @@ const translations = {
   },
 };
 
-const MyPage = () => {
-  const [theme, setTheme] = useState(initialTheme);
-
+const MyPageContext = () => {
   const [language, setLanguage] = useState(initialLanguage);
   const [texts, setTexts] = useState(translations[language]);
 
   const [auth, setAuth] = useState(initialAuth);
-
-  const handleTheme = (e) => {
-    console.log(e.target.value);
-    if (e.target.value === "light") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
-  };
 
   const handleLanguage = (e) => {
     if (e.target.value === "es") {
@@ -137,18 +128,18 @@ const MyPage = () => {
 
   return (
     <div className="my-page">
-      <Header
-        theme={theme}
-        handleTheme={handleTheme}
-        texts={texts}
-        handleLanguage={handleLanguage}
-        auth={auth}
-        handleAuth={handleAuth}
-      />
-      <Main theme={theme} texts={texts} auth={auth} />
-      <Footer theme={theme} texts={texts} />
+      <ThemeProvider>
+        <HeaderContext
+          texts={texts}
+          handleLanguage={handleLanguage}
+          auth={auth}
+          handleAuth={handleAuth}
+        />
+        <MainContext texts={texts} auth={auth} />
+        <FooterContext texts={texts} />
+      </ThemeProvider>
     </div>
   );
 };
 
-export default MyPage;
+export default MyPageContext;
